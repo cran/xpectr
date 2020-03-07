@@ -12,7 +12,7 @@
 
 <meta name="author" content="Ludvig Renbo Olsen" />
 
-<meta name="date" content="2020-02-09" />
+<meta name="date" content="2020-03-06" />
 
 <title>README for xpectr</title>
 
@@ -329,7 +329,7 @@ padding-bottom:7px;
 
 <h1 class="title toc-ignore">README for xpectr</h1>
 <h4 class="author">Ludvig Renbo Olsen</h4>
-<h4 class="date">2020-02-09</h4>
+<h4 class="date">2020-03-06</h4>
 <div class="abstract">
 <p class="abstract">Abstract</p>
 This vignette is an introduction to the <code>xpectr</code> package. <code>xpectr</code> provides a set of utilities and RStudio addins for generating tests for <code>testthat</code> unit testing.  <br />
@@ -676,7 +676,7 @@ Contact author at <a href="mailto:r-pkgs@ludvigolsen.dk" class="email">r-pkgs@lu
 <a class="sourceLine" id="cb14-8" data-line-number="8">xpectr<span class="op">::</span><span class="kw">set_test_seed</span>(<span class="dv">42</span>)</a>
 <a class="sourceLine" id="cb14-9" data-line-number="9"><span class="co"># Testing side effects</span></a>
 <a class="sourceLine" id="cb14-10" data-line-number="10"><span class="co"># Assigning side effects</span></a>
-<a class="sourceLine" id="cb14-11" data-line-number="11">side_effects_<span class="dv">19148</span> &lt;-<span class="st"> </span>xpectr<span class="op">::</span><span class="kw">capture_side_effects</span>(<span class="kw">fn</span>())</a>
+<a class="sourceLine" id="cb14-11" data-line-number="11">side_effects_<span class="dv">19148</span> &lt;-<span class="st"> </span>xpectr<span class="op">::</span><span class="kw">capture_side_effects</span>(<span class="kw">fn</span>(), <span class="dt">reset_seed =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb14-12" data-line-number="12"><span class="kw">expect_equal</span>(</a>
 <a class="sourceLine" id="cb14-13" data-line-number="13">  xpectr<span class="op">::</span><span class="kw">strip</span>(side_effects_<span class="dv">19148</span>[[<span class="st">'warnings'</span>]]),</a>
 <a class="sourceLine" id="cb14-14" data-line-number="14">  xpectr<span class="op">::</span><span class="kw">strip</span>(<span class="kw">c</span>(<span class="st">&quot;G'Day Mam! I'm a warning to the world!&quot;</span>, </a>
@@ -829,7 +829,7 @@ Contact author at <a href="mailto:r-pkgs@ludvigolsen.dk" class="email">r-pkgs@lu
 <a class="sourceLine" id="cb15-86" data-line-number="86">xpectr<span class="op">::</span><span class="kw">set_test_seed</span>(<span class="dv">42</span>)</a>
 <a class="sourceLine" id="cb15-87" data-line-number="87"><span class="co"># Testing side effects</span></a>
 <a class="sourceLine" id="cb15-88" data-line-number="88"><span class="co"># Assigning side effects</span></a>
-<a class="sourceLine" id="cb15-89" data-line-number="89">side_effects_<span class="dv">16417</span> &lt;-<span class="st"> </span>xpectr<span class="op">::</span><span class="kw">capture_side_effects</span>(<span class="kw">fn</span>(<span class="dt">x =</span> <span class="dv">2</span>, <span class="dt">y =</span> <span class="dv">-1</span>, <span class="dt">z =</span> <span class="dv">5</span>))</a>
+<a class="sourceLine" id="cb15-89" data-line-number="89">side_effects_<span class="dv">16417</span> &lt;-<span class="st"> </span>xpectr<span class="op">::</span><span class="kw">capture_side_effects</span>(<span class="kw">fn</span>(<span class="dt">x =</span> <span class="dv">2</span>, <span class="dt">y =</span> <span class="dv">-1</span>, <span class="dt">z =</span> <span class="dv">5</span>), <span class="dt">reset_seed =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb15-90" data-line-number="90"><span class="kw">expect_equal</span>(</a>
 <a class="sourceLine" id="cb15-91" data-line-number="91">  xpectr<span class="op">::</span><span class="kw">strip</span>(side_effects_<span class="dv">16417</span>[[<span class="st">'warnings'</span>]]),</a>
 <a class="sourceLine" id="cb15-92" data-line-number="92">  xpectr<span class="op">::</span><span class="kw">strip</span>(<span class="st">&quot;'y'&lt;0&quot;</span>),</a>
@@ -882,7 +882,7 @@ Contact author at <a href="mailto:r-pkgs@ludvigolsen.dk" class="email">r-pkgs@lu
 <a class="sourceLine" id="cb15-139" data-line-number="139">xpectr<span class="op">::</span><span class="kw">set_test_seed</span>(<span class="dv">42</span>)</a>
 <a class="sourceLine" id="cb15-140" data-line-number="140"><span class="co"># Testing side effects</span></a>
 <a class="sourceLine" id="cb15-141" data-line-number="141"><span class="co"># Assigning side effects</span></a>
-<a class="sourceLine" id="cb15-142" data-line-number="142">side_effects_<span class="dv">17365</span> &lt;-<span class="st"> </span>xpectr<span class="op">::</span><span class="kw">capture_side_effects</span>(<span class="kw">fn</span>(<span class="dt">x =</span> <span class="dv">2</span>, <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">z =</span> <span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb15-142" data-line-number="142">side_effects_<span class="dv">17365</span> &lt;-<span class="st"> </span>xpectr<span class="op">::</span><span class="kw">capture_side_effects</span>(<span class="kw">fn</span>(<span class="dt">x =</span> <span class="dv">2</span>, <span class="dt">y =</span> <span class="dv">0</span>, <span class="dt">z =</span> <span class="dv">10</span>), <span class="dt">reset_seed =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb15-143" data-line-number="143"><span class="kw">expect_equal</span>(</a>
 <a class="sourceLine" id="cb15-144" data-line-number="144">  xpectr<span class="op">::</span><span class="kw">strip</span>(side_effects_<span class="dv">17365</span>[[<span class="st">'warnings'</span>]]),</a>
 <a class="sourceLine" id="cb15-145" data-line-number="145">  xpectr<span class="op">::</span><span class="kw">strip</span>(<span class="kw">character</span>(<span class="dv">0</span>)),</a>

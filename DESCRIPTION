@@ -1,6 +1,6 @@
 Package: xpectr
 Title: Generates Expectations for 'testthat' Unit Testing
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: 
     c(person(given = "Ludvig Renbo",
              family = "Olsen",
@@ -25,9 +25,9 @@ LazyData: true
 RoxygenNote: 7.0.2
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2020-02-09 21:13:06 UTC; ludvigolsen
+Packaged: 2020-03-06 10:49:21 UTC; ludvigolsen
 Author: Ludvig Renbo Olsen [aut, cre],
   R. Mark Sharp [ctb]
 Maintainer: Ludvig Renbo Olsen <r-pkgs@ludvigolsen.dk>
 Repository: CRAN
-Date/Publication: 2020-02-29 12:00:03 UTC
+Date/Publication: 2020-03-07 11:20:03 UTC

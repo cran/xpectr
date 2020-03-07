@@ -706,7 +706,7 @@ create_expectations_vector <- function(data, name = NULL, indentation = 0,
 
 create_expectations_side_effect <- function(side_effects, name = NULL,
                                             indentation = 0, strip = TRUE,
-                                            add_comments, test_id = 10000) {
+                                            add_comments = TRUE, test_id = 10000) {
 
   # Check arguments ####
   assert_collection <- checkmate::makeAssertCollection()
@@ -756,7 +756,7 @@ create_expectations_side_effect <- function(side_effects, name = NULL,
 
     # Create assignment string
     assign_string <- create_assignment_strings(
-      call_name = paste0("xpectr::capture_side_effects(", call_name, ")"),
+      call_name = paste0("xpectr::capture_side_effects(", call_name, ", reset_seed = TRUE)"),
       new_name = name,
       evaluate_once = TRUE,
       comment = "# Assigning side effects")
