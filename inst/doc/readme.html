@@ -12,7 +12,7 @@
 
 <meta name="author" content="Ludvig Renbo Olsen" />
 
-<meta name="date" content="2020-03-06" />
+<meta name="date" content="2020-03-15" />
 
 <title>README for xpectr</title>
 
@@ -329,7 +329,7 @@ padding-bottom:7px;
 
 <h1 class="title toc-ignore">README for xpectr</h1>
 <h4 class="author">Ludvig Renbo Olsen</h4>
-<h4 class="date">2020-03-06</h4>
+<h4 class="date">2020-03-15</h4>
 <div class="abstract">
 <p class="abstract">Abstract</p>
 This vignette is an introduction to the <code>xpectr</code> package. <code>xpectr</code> provides a set of utilities and RStudio addins for generating tests for <code>testthat</code> unit testing.  <br />
@@ -352,7 +352,7 @@ Contact author at <a href="mailto:r-pkgs@ludvigolsen.dk" class="email">r-pkgs@lu
 <li><a href="#examples">Examples</a><ul>
 <li><a href="#gxs_selection">gxs_selection</a></li>
 <li><a href="#gxs_function">gxs_function</a></li>
-<li><a href="#wrapstringaddin">wrapStringAddin</a></li>
+<li><a href="#rstudio-addins">RStudio Addins</a></li>
 </ul></li>
 </ul>
 </div>
@@ -363,53 +363,171 @@ Contact author at <a href="mailto:r-pkgs@ludvigolsen.dk" class="email">r-pkgs@lu
 <p>Note: If you comment out the call to <code>gxs_function()</code>, it is easy to later regenerate the tests. By using a diff tool, you can check that only the intended changes have been made to the file.</p>
 <div id="installation" class="section level2">
 <h2>Installation</h2>
-<p>You can install the development version with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages(&quot;devtools&quot;)  </span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;ludvigolsen/xpectr&quot;</span>)</a></code></pre></div>
-<p>You can install the latest CRAN release of the package with:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;xpectr&quot;</span>)  </a></code></pre></div>
+<p>Install the CRAN version with:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;xpectr&quot;</span>)</a></code></pre></div>
+<p>Install the development version with:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages(&quot;devtools&quot;)  </span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;ludvigolsen/xpectr&quot;</span>)</a></code></pre></div>
 </div>
 <div id="main-functions" class="section level2">
 <h2>Main functions</h2>
 <div id="generator-functions" class="section level3">
 <h3>Generator functions</h3>
-<p>These functions are used for <em>generating expectations</em> (gxs).</p>
-<ul>
-<li><code>gxs_selection()</code></li>
-<li><code>gxs_function()</code></li>
-</ul>
+<p>These functions are used to <em>generate expectations</em> (gxs).</p>
+<table>
+<colgroup>
+<col width="43%"></col>
+<col width="56%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>gxs_selection()</code></td>
+<td align="left">Generates <code>testthat::expect_*</code> statements from a selection (string of code)</td>
+</tr>
+<tr class="even">
+<td align="left"><code>gxs_function()</code></td>
+<td align="left">Generates <code>testthat::expect_*</code> statements for combinations of supplied argument values</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="functions-for-use-in-tests" class="section level3">
 <h3>Functions for use in tests</h3>
-<ul>
-<li><code>strip()</code></li>
-<li><code>strip_msg()</code></li>
-<li><code>suppress_mw()</code></li>
-<li><code>capture_side_effects()</code></li>
-<li><code>smpl()</code></li>
-<li><code>simplified_formals()</code></li>
-<li><code>element_lengths()</code>, <code>element_types()</code>, <code>element_classes()</code></li>
-<li><code>num_total_elements()</code></li>
-<li><code>set_test_seed()</code></li>
-</ul>
+<table>
+<colgroup>
+<col width="43%"></col>
+<col width="56%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>strip()</code></td>
+<td align="left">Strips strings of non-alphanumeric characters</td>
+</tr>
+<tr class="even">
+<td align="left"><code>strip_msg()</code></td>
+<td align="left">Strips side-effect messages of non-alphanumeric characters and rethrows them</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>suppress_mw()</code></td>
+<td align="left">Suppresses warnings and messages</td>
+</tr>
+<tr class="even">
+<td align="left"><code>capture_side_effects()</code></td>
+<td align="left">Captures errors, warnings, and messages from an expression</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>smpl()</code></td>
+<td align="left">Samples a vector, factor or data frame with internal random seed</td>
+</tr>
+<tr class="even">
+<td align="left"><code>simplified_formals()</code></td>
+<td align="left">Formats formals as easily testable character vector</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>element_lengths()</code>, <code>element_types()</code>, <code>element_classes()</code></td>
+<td align="left">Gets the length/type/class of each element</td>
+</tr>
+<tr class="even">
+<td align="left"><code>num_total_elements()</code></td>
+<td align="left">Unlists recursively and finds the total number of elements</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>set_test_seed()</code></td>
+<td align="left">Set random seed for unit tests compatible with <code>R &lt; 3.6.0</code></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="helper-functions" class="section level3">
 <h3>Helper functions</h3>
-<ul>
-<li><code>prepare_insertion()</code></li>
-<li><code>capture_parse_eval_side_effects()</code></li>
-<li><code>stop_if()</code>, <code>warn_if()</code>, <code>message_if()</code></li>
-</ul>
+<table>
+<colgroup>
+<col width="43%"></col>
+<col width="56%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>prepare_insertion()</code></td>
+<td align="left">Collapses a vector of expectation strings and adds indentation</td>
+</tr>
+<tr class="even">
+<td align="left"><code>capture_parse_eval_side_effects()</code></td>
+<td align="left">Wraps string in <code>capture_side_effects()</code> before parsing and evaluating it</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>stop_if()</code>, <code>warn_if()</code>, <code>message_if()</code></td>
+<td align="left">If <code>TRUE</code>, generate error/warning/message with the supplied message</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="addins" class="section level2">
 <h2>Addins</h2>
-<ul>
-<li><code>Insert Expectations</code> : generates <code>testthat</code> <code>expect_*</code> tests from selected code (with <code>gxs_selection()</code>)</li>
-<li><code>dput() selected</code> : applies <code>dput()</code> to selected code</li>
-<li><code>Wrap string with paste0</code> : splits selected string every n characters and wraps in <code>paste0</code> call</li>
-<li><code>Insert checkmate AssertCollection code</code> : inserts code for initializing and reporting a checkmate AssertCollection</li>
-</ul>
+<table>
+<colgroup>
+<col width="7%"></col>
+<col width="14%"></col>
+<col width="77%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Addin</th>
+<th align="left">Description</th>
+<th align="left">Suggested Key Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><em>Insert Expectations</em> </br><font size="2"><code>insertExpectationsAddin()</code></font></td>
+<td align="left">Generates <code>testthat</code> <code>expect_*</code> tests from selected code (with <code>gxs_selection()</code>)</td>
+<td align="left"><code>Alt+E</code></td>
+</tr>
+<tr class="even">
+<td align="left"><em>Initialize <code>test_that()</code></em> </br><font size="2"><code>initializeTestthatAddin()</code></font></td>
+<td align="left">Inserts <code>testthat::test_that()</code> code</td>
+<td align="left"><code>Alt+T</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><em>Initialize <code>gxs_function()</code></em> </br><font size="2"><code>initializeGXSFunctionAddin()</code></font></td>
+<td align="left">Initializes a <code>gxs_function()</code> call with default values of a function</td>
+<td align="left"><code>Alt+F</code></td>
+</tr>
+<tr class="even">
+<td align="left"><em><code>dput()</code> selected</em> </br><font size="2"><code>dputSelectedAddin()</code></font></td>
+<td align="left">Applies <code>dput()</code> to selected code</td>
+<td align="left"><code>Alt+D</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><em>Wrap string with <code>paste0()</code></em> </br><font size="2"><code>wrapStringAddin()</code></font></td>
+<td align="left">Splits selected string every n characters and wraps in <code>paste0()</code> call</td>
+<td align="left"><code>Alt+P</code></td>
+</tr>
+<tr class="even">
+<td align="left"><em>Insert <code>checkmate</code> <code>AssertCollection</code>code</em> </br><font size="2"><code>assertCollectionAddin()</code></font></td>
+<td align="left">Inserts code for initializing and reporting a <code>checkmate</code> <code>AssertCollection</code></td>
+<td align="left"><code>Alt+C</code></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="using-in-packages" class="section level2">
 <h2>Using in packages</h2>
@@ -679,60 +797,58 @@ Contact author at <a href="mailto:r-pkgs@ludvigolsen.dk" class="email">r-pkgs@lu
 <a class="sourceLine" id="cb14-11" data-line-number="11">side_effects_<span class="dv">19148</span> &lt;-<span class="st"> </span>xpectr<span class="op">::</span><span class="kw">capture_side_effects</span>(<span class="kw">fn</span>(), <span class="dt">reset_seed =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb14-12" data-line-number="12"><span class="kw">expect_equal</span>(</a>
 <a class="sourceLine" id="cb14-13" data-line-number="13">  xpectr<span class="op">::</span><span class="kw">strip</span>(side_effects_<span class="dv">19148</span>[[<span class="st">'warnings'</span>]]),</a>
-<a class="sourceLine" id="cb14-14" data-line-number="14">  xpectr<span class="op">::</span><span class="kw">strip</span>(<span class="kw">c</span>(<span class="st">&quot;G'Day Mam! I'm a warning to the world!&quot;</span>, </a>
-<a class="sourceLine" id="cb14-15" data-line-number="15">                  <span class="st">&quot;Hopefully the whole world will see me :o&quot;</span>)),</a>
-<a class="sourceLine" id="cb14-16" data-line-number="16">  <span class="dt">fixed =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb14-17" data-line-number="17"><span class="kw">expect_equal</span>(</a>
-<a class="sourceLine" id="cb14-18" data-line-number="18">  xpectr<span class="op">::</span><span class="kw">strip</span>(side_effects_<span class="dv">19148</span>[[<span class="st">'messages'</span>]]),</a>
-<a class="sourceLine" id="cb14-19" data-line-number="19">  xpectr<span class="op">::</span><span class="kw">strip</span>(<span class="kw">c</span>(<span class="st">&quot;Hi! I'm Kevin, your favorite message!</span><span class="ch">\n</span><span class="st">&quot;</span>, </a>
-<a class="sourceLine" id="cb14-20" data-line-number="20">                  <span class="st">&quot;Kevin is ma name! Yesss!</span><span class="ch">\n</span><span class="st">&quot;</span>)),</a>
-<a class="sourceLine" id="cb14-21" data-line-number="21">  <span class="dt">fixed =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb14-22" data-line-number="22"><span class="co"># Assigning output</span></a>
-<a class="sourceLine" id="cb14-23" data-line-number="23">output_<span class="dv">19148</span> &lt;-<span class="st"> </span>xpectr<span class="op">::</span><span class="kw">suppress_mw</span>(<span class="kw">fn</span>())</a>
-<a class="sourceLine" id="cb14-24" data-line-number="24"><span class="co"># Testing class</span></a>
-<a class="sourceLine" id="cb14-25" data-line-number="25"><span class="kw">expect_equal</span>(</a>
-<a class="sourceLine" id="cb14-26" data-line-number="26">  <span class="kw">class</span>(output_<span class="dv">19148</span>),</a>
-<a class="sourceLine" id="cb14-27" data-line-number="27">  <span class="st">&quot;character&quot;</span>,</a>
-<a class="sourceLine" id="cb14-28" data-line-number="28">  <span class="dt">fixed =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb14-29" data-line-number="29"><span class="co"># Testing type</span></a>
-<a class="sourceLine" id="cb14-30" data-line-number="30"><span class="kw">expect_type</span>(</a>
-<a class="sourceLine" id="cb14-31" data-line-number="31">  output_<span class="dv">19148</span>,</a>
-<a class="sourceLine" id="cb14-32" data-line-number="32">  <span class="dt">type =</span> <span class="st">&quot;character&quot;</span>)</a>
-<a class="sourceLine" id="cb14-33" data-line-number="33"><span class="co"># Testing values</span></a>
-<a class="sourceLine" id="cb14-34" data-line-number="34"><span class="kw">expect_equal</span>(</a>
-<a class="sourceLine" id="cb14-35" data-line-number="35">  output_<span class="dv">19148</span>,</a>
-<a class="sourceLine" id="cb14-36" data-line-number="36">  <span class="st">&quot;the output&quot;</span>,</a>
-<a class="sourceLine" id="cb14-37" data-line-number="37">  <span class="dt">fixed =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb14-38" data-line-number="38"><span class="co"># Testing names</span></a>
-<a class="sourceLine" id="cb14-39" data-line-number="39"><span class="kw">expect_equal</span>(</a>
-<a class="sourceLine" id="cb14-40" data-line-number="40">  <span class="kw">names</span>(output_<span class="dv">19148</span>),</a>
-<a class="sourceLine" id="cb14-41" data-line-number="41">  <span class="ot">NULL</span>,</a>
-<a class="sourceLine" id="cb14-42" data-line-number="42">  <span class="dt">fixed =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb14-43" data-line-number="43"><span class="co"># Testing length</span></a>
-<a class="sourceLine" id="cb14-44" data-line-number="44"><span class="kw">expect_equal</span>(</a>
-<a class="sourceLine" id="cb14-45" data-line-number="45">  <span class="kw">length</span>(output_<span class="dv">19148</span>),</a>
-<a class="sourceLine" id="cb14-46" data-line-number="46">  1L)</a>
-<a class="sourceLine" id="cb14-47" data-line-number="47"><span class="co"># Testing sum of element lengths</span></a>
-<a class="sourceLine" id="cb14-48" data-line-number="48"><span class="kw">expect_equal</span>(</a>
-<a class="sourceLine" id="cb14-49" data-line-number="49">  <span class="kw">sum</span>(xpectr<span class="op">::</span><span class="kw">element_lengths</span>(output_<span class="dv">19148</span>)),</a>
-<a class="sourceLine" id="cb14-50" data-line-number="50">  1L)</a>
-<a class="sourceLine" id="cb14-51" data-line-number="51"><span class="co">## Finished testing 'fn()'                                                  ####</span></a>
+<a class="sourceLine" id="cb14-14" data-line-number="14">  xpectr<span class="op">::</span><span class="kw">strip</span>(<span class="kw">c</span>(<span class="st">&quot;G'Day Mam! I'm a warning to the world!&quot;</span>, <span class="st">&quot;Hopefully the whole world will see me :o&quot;</span>)),</a>
+<a class="sourceLine" id="cb14-15" data-line-number="15">  <span class="dt">fixed =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb14-16" data-line-number="16"><span class="kw">expect_equal</span>(</a>
+<a class="sourceLine" id="cb14-17" data-line-number="17">  xpectr<span class="op">::</span><span class="kw">strip</span>(side_effects_<span class="dv">19148</span>[[<span class="st">'messages'</span>]]),</a>
+<a class="sourceLine" id="cb14-18" data-line-number="18">  xpectr<span class="op">::</span><span class="kw">strip</span>(<span class="kw">c</span>(<span class="st">&quot;Hi! I'm Kevin, your favorite message!</span><span class="ch">\n</span><span class="st">&quot;</span>, <span class="st">&quot;Kevin is ma name! Yesss!</span><span class="ch">\n</span><span class="st">&quot;</span>)),</a>
+<a class="sourceLine" id="cb14-19" data-line-number="19">  <span class="dt">fixed =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb14-20" data-line-number="20"><span class="co"># Assigning output</span></a>
+<a class="sourceLine" id="cb14-21" data-line-number="21">output_<span class="dv">19148</span> &lt;-<span class="st"> </span>xpectr<span class="op">::</span><span class="kw">suppress_mw</span>(<span class="kw">fn</span>())</a>
+<a class="sourceLine" id="cb14-22" data-line-number="22"><span class="co"># Testing class</span></a>
+<a class="sourceLine" id="cb14-23" data-line-number="23"><span class="kw">expect_equal</span>(</a>
+<a class="sourceLine" id="cb14-24" data-line-number="24">  <span class="kw">class</span>(output_<span class="dv">19148</span>),</a>
+<a class="sourceLine" id="cb14-25" data-line-number="25">  <span class="st">&quot;character&quot;</span>,</a>
+<a class="sourceLine" id="cb14-26" data-line-number="26">  <span class="dt">fixed =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb14-27" data-line-number="27"><span class="co"># Testing type</span></a>
+<a class="sourceLine" id="cb14-28" data-line-number="28"><span class="kw">expect_type</span>(</a>
+<a class="sourceLine" id="cb14-29" data-line-number="29">  output_<span class="dv">19148</span>,</a>
+<a class="sourceLine" id="cb14-30" data-line-number="30">  <span class="dt">type =</span> <span class="st">&quot;character&quot;</span>)</a>
+<a class="sourceLine" id="cb14-31" data-line-number="31"><span class="co"># Testing values</span></a>
+<a class="sourceLine" id="cb14-32" data-line-number="32"><span class="kw">expect_equal</span>(</a>
+<a class="sourceLine" id="cb14-33" data-line-number="33">  output_<span class="dv">19148</span>,</a>
+<a class="sourceLine" id="cb14-34" data-line-number="34">  <span class="st">&quot;the output&quot;</span>,</a>
+<a class="sourceLine" id="cb14-35" data-line-number="35">  <span class="dt">fixed =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb14-36" data-line-number="36"><span class="co"># Testing names</span></a>
+<a class="sourceLine" id="cb14-37" data-line-number="37"><span class="kw">expect_equal</span>(</a>
+<a class="sourceLine" id="cb14-38" data-line-number="38">  <span class="kw">names</span>(output_<span class="dv">19148</span>),</a>
+<a class="sourceLine" id="cb14-39" data-line-number="39">  <span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb14-40" data-line-number="40">  <span class="dt">fixed =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb14-41" data-line-number="41"><span class="co"># Testing length</span></a>
+<a class="sourceLine" id="cb14-42" data-line-number="42"><span class="kw">expect_equal</span>(</a>
+<a class="sourceLine" id="cb14-43" data-line-number="43">  <span class="kw">length</span>(output_<span class="dv">19148</span>),</a>
+<a class="sourceLine" id="cb14-44" data-line-number="44">  1L)</a>
+<a class="sourceLine" id="cb14-45" data-line-number="45"><span class="co"># Testing sum of element lengths</span></a>
+<a class="sourceLine" id="cb14-46" data-line-number="46"><span class="kw">expect_equal</span>(</a>
+<a class="sourceLine" id="cb14-47" data-line-number="47">  <span class="kw">sum</span>(xpectr<span class="op">::</span><span class="kw">element_lengths</span>(output_<span class="dv">19148</span>)),</a>
+<a class="sourceLine" id="cb14-48" data-line-number="48">  1L)</a>
+<a class="sourceLine" id="cb14-49" data-line-number="49"><span class="co">## Finished testing 'fn()'                                                  ####</span></a>
+<a class="sourceLine" id="cb14-50" data-line-number="50"></a>
+<a class="sourceLine" id="cb14-51" data-line-number="51"><span class="co"># In case of errors, the warnings and messages aren't tested</span></a>
 <a class="sourceLine" id="cb14-52" data-line-number="52"></a>
-<a class="sourceLine" id="cb14-53" data-line-number="53"><span class="co"># In case of errors, the warnings and messages aren't tested</span></a>
+<a class="sourceLine" id="cb14-53" data-line-number="53"><span class="kw">gxs_selection</span>(<span class="st">&quot;fn(raise = TRUE)&quot;</span>)</a>
 <a class="sourceLine" id="cb14-54" data-line-number="54"></a>
-<a class="sourceLine" id="cb14-55" data-line-number="55"><span class="kw">gxs_selection</span>(<span class="st">&quot;fn(raise = TRUE)&quot;</span>)</a>
+<a class="sourceLine" id="cb14-55" data-line-number="55"><span class="co"># Inserts the following tests:</span></a>
 <a class="sourceLine" id="cb14-56" data-line-number="56"></a>
-<a class="sourceLine" id="cb14-57" data-line-number="57"><span class="co"># Inserts the following tests:</span></a>
-<a class="sourceLine" id="cb14-58" data-line-number="58"></a>
-<a class="sourceLine" id="cb14-59" data-line-number="59"><span class="co">## Testing 'fn(raise = TRUE)'                                               ####</span></a>
-<a class="sourceLine" id="cb14-60" data-line-number="60"><span class="co">## Initially generated by xpectr</span></a>
-<a class="sourceLine" id="cb14-61" data-line-number="61">xpectr<span class="op">::</span><span class="kw">set_test_seed</span>(<span class="dv">42</span>)</a>
-<a class="sourceLine" id="cb14-62" data-line-number="62"><span class="co"># Testing side effects</span></a>
-<a class="sourceLine" id="cb14-63" data-line-number="63"><span class="kw">expect_error</span>(</a>
-<a class="sourceLine" id="cb14-64" data-line-number="64">  xpectr<span class="op">::</span><span class="kw">strip_msg</span>(<span class="kw">fn</span>(<span class="dt">raise =</span> <span class="ot">TRUE</span>)),</a>
-<a class="sourceLine" id="cb14-65" data-line-number="65">  xpectr<span class="op">::</span><span class="kw">strip</span>(<span class="st">&quot;Lord Evil Error has arrived! Yeehaaa&quot;</span>),</a>
-<a class="sourceLine" id="cb14-66" data-line-number="66">  <span class="dt">fixed =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb14-67" data-line-number="67"><span class="co">## Finished testing 'fn(raise = TRUE)'                                      ####</span></a></code></pre></div>
+<a class="sourceLine" id="cb14-57" data-line-number="57"><span class="co">## Testing 'fn(raise = TRUE)'                                               ####</span></a>
+<a class="sourceLine" id="cb14-58" data-line-number="58"><span class="co">## Initially generated by xpectr</span></a>
+<a class="sourceLine" id="cb14-59" data-line-number="59">xpectr<span class="op">::</span><span class="kw">set_test_seed</span>(<span class="dv">42</span>)</a>
+<a class="sourceLine" id="cb14-60" data-line-number="60"><span class="co"># Testing side effects</span></a>
+<a class="sourceLine" id="cb14-61" data-line-number="61"><span class="kw">expect_error</span>(</a>
+<a class="sourceLine" id="cb14-62" data-line-number="62">  xpectr<span class="op">::</span><span class="kw">strip_msg</span>(<span class="kw">fn</span>(<span class="dt">raise =</span> <span class="ot">TRUE</span>)),</a>
+<a class="sourceLine" id="cb14-63" data-line-number="63">  xpectr<span class="op">::</span><span class="kw">strip</span>(<span class="st">&quot;Lord Evil Error has arrived! Yeehaaa&quot;</span>),</a>
+<a class="sourceLine" id="cb14-64" data-line-number="64">  <span class="dt">fixed =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb14-65" data-line-number="65"><span class="co">## Finished testing 'fn(raise = TRUE)'                                      ####</span></a></code></pre></div>
 </div>
 </div>
 <div id="gxs_function" class="section level3">
@@ -742,7 +858,7 @@ Contact author at <a href="mailto:r-pkgs@ludvigolsen.dk" class="email">r-pkgs@lu
 <p>By default, each argument is tested with the <code>NULL</code> object as well, why we only need to specify it when the baseline value should be <code>NULL</code>.</p>
 <p>It is important that we manually read through the generated tests to make sure that our function is behaving as intended, and to check if any important tests are missing.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co"># Define a function with arguments</span></a>
-<a class="sourceLine" id="cb15-2" data-line-number="2">fn &lt;-<span class="st"> </span><span class="cf">function</span>(x, y, z) {</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">fn &lt;-<span class="st"> </span><span class="cf">function</span>(x, y, <span class="dt">z =</span> <span class="dv">10</span>) {</a>
 <a class="sourceLine" id="cb15-3" data-line-number="3">  <span class="cf">if</span> (x <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>) <span class="kw">stop</span>(<span class="st">&quot;'x' &gt; 3&quot;</span>)</a>
 <a class="sourceLine" id="cb15-4" data-line-number="4">  <span class="cf">if</span> (y <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) <span class="kw">warning</span>(<span class="st">&quot;'y'&lt;0&quot;</span>)</a>
 <a class="sourceLine" id="cb15-5" data-line-number="5">  <span class="cf">if</span> (z <span class="op">==</span><span class="st"> </span><span class="dv">10</span>) <span class="kw">message</span>(<span class="st">&quot;'z' was 10!&quot;</span>)</a>
@@ -798,7 +914,7 @@ Contact author at <a href="mailto:r-pkgs@ludvigolsen.dk" class="email">r-pkgs@lu
 <a class="sourceLine" id="cb15-55" data-line-number="55">  1L)</a>
 <a class="sourceLine" id="cb15-56" data-line-number="56"></a>
 <a class="sourceLine" id="cb15-57" data-line-number="57"><span class="co"># Testing fn(x = 4, y = 0, z = 5)</span></a>
-<a class="sourceLine" id="cb15-58" data-line-number="58"><span class="co"># Changed from baseline: x</span></a>
+<a class="sourceLine" id="cb15-58" data-line-number="58"><span class="co"># Changed from baseline: x = 4</span></a>
 <a class="sourceLine" id="cb15-59" data-line-number="59">xpectr<span class="op">::</span><span class="kw">set_test_seed</span>(<span class="dv">42</span>)</a>
 <a class="sourceLine" id="cb15-60" data-line-number="60"><span class="co"># Testing side effects</span></a>
 <a class="sourceLine" id="cb15-61" data-line-number="61"><span class="kw">expect_error</span>(</a>
@@ -807,7 +923,7 @@ Contact author at <a href="mailto:r-pkgs@ludvigolsen.dk" class="email">r-pkgs@lu
 <a class="sourceLine" id="cb15-64" data-line-number="64">  <span class="dt">fixed =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb15-65" data-line-number="65"></a>
 <a class="sourceLine" id="cb15-66" data-line-number="66"><span class="co"># Testing fn(x = NA, y = 0, z = 5)</span></a>
-<a class="sourceLine" id="cb15-67" data-line-number="67"><span class="co"># Changed from baseline: x</span></a>
+<a class="sourceLine" id="cb15-67" data-line-number="67"><span class="co"># Changed from baseline: x = NA</span></a>
 <a class="sourceLine" id="cb15-68" data-line-number="68">xpectr<span class="op">::</span><span class="kw">set_test_seed</span>(<span class="dv">42</span>)</a>
 <a class="sourceLine" id="cb15-69" data-line-number="69"><span class="co"># Testing side effects</span></a>
 <a class="sourceLine" id="cb15-70" data-line-number="70"><span class="kw">expect_error</span>(</a>
@@ -816,7 +932,7 @@ Contact author at <a href="mailto:r-pkgs@ludvigolsen.dk" class="email">r-pkgs@lu
 <a class="sourceLine" id="cb15-73" data-line-number="73">  <span class="dt">fixed =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb15-74" data-line-number="74"></a>
 <a class="sourceLine" id="cb15-75" data-line-number="75"><span class="co"># Testing fn(x = NULL, y = 0, z = 5)</span></a>
-<a class="sourceLine" id="cb15-76" data-line-number="76"><span class="co"># Changed from baseline: x</span></a>
+<a class="sourceLine" id="cb15-76" data-line-number="76"><span class="co"># Changed from baseline: x = NULL</span></a>
 <a class="sourceLine" id="cb15-77" data-line-number="77">xpectr<span class="op">::</span><span class="kw">set_test_seed</span>(<span class="dv">42</span>)</a>
 <a class="sourceLine" id="cb15-78" data-line-number="78"><span class="co"># Testing side effects</span></a>
 <a class="sourceLine" id="cb15-79" data-line-number="79"><span class="kw">expect_error</span>(</a>
@@ -825,7 +941,7 @@ Contact author at <a href="mailto:r-pkgs@ludvigolsen.dk" class="email">r-pkgs@lu
 <a class="sourceLine" id="cb15-82" data-line-number="82">  <span class="dt">fixed =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb15-83" data-line-number="83"></a>
 <a class="sourceLine" id="cb15-84" data-line-number="84"><span class="co"># Testing fn(x = 2, y = -1, z = 5)</span></a>
-<a class="sourceLine" id="cb15-85" data-line-number="85"><span class="co"># Changed from baseline: y</span></a>
+<a class="sourceLine" id="cb15-85" data-line-number="85"><span class="co"># Changed from baseline: y = -1</span></a>
 <a class="sourceLine" id="cb15-86" data-line-number="86">xpectr<span class="op">::</span><span class="kw">set_test_seed</span>(<span class="dv">42</span>)</a>
 <a class="sourceLine" id="cb15-87" data-line-number="87"><span class="co"># Testing side effects</span></a>
 <a class="sourceLine" id="cb15-88" data-line-number="88"><span class="co"># Assigning side effects</span></a>
@@ -869,7 +985,7 @@ Contact author at <a href="mailto:r-pkgs@ludvigolsen.dk" class="email">r-pkgs@lu
 <a class="sourceLine" id="cb15-126" data-line-number="126">  1L)</a>
 <a class="sourceLine" id="cb15-127" data-line-number="127"></a>
 <a class="sourceLine" id="cb15-128" data-line-number="128"><span class="co"># Testing fn(x = 2, y = NULL, z = 5)</span></a>
-<a class="sourceLine" id="cb15-129" data-line-number="129"><span class="co"># Changed from baseline: y</span></a>
+<a class="sourceLine" id="cb15-129" data-line-number="129"><span class="co"># Changed from baseline: y = NULL</span></a>
 <a class="sourceLine" id="cb15-130" data-line-number="130">xpectr<span class="op">::</span><span class="kw">set_test_seed</span>(<span class="dv">42</span>)</a>
 <a class="sourceLine" id="cb15-131" data-line-number="131"><span class="co"># Testing side effects</span></a>
 <a class="sourceLine" id="cb15-132" data-line-number="132"><span class="kw">expect_error</span>(</a>
@@ -878,7 +994,7 @@ Contact author at <a href="mailto:r-pkgs@ludvigolsen.dk" class="email">r-pkgs@lu
 <a class="sourceLine" id="cb15-135" data-line-number="135">  <span class="dt">fixed =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb15-136" data-line-number="136"></a>
 <a class="sourceLine" id="cb15-137" data-line-number="137"><span class="co"># Testing fn(x = 2, y = 0, z = 10)</span></a>
-<a class="sourceLine" id="cb15-138" data-line-number="138"><span class="co"># Changed from baseline: z</span></a>
+<a class="sourceLine" id="cb15-138" data-line-number="138"><span class="co"># Changed from baseline: z = 10</span></a>
 <a class="sourceLine" id="cb15-139" data-line-number="139">xpectr<span class="op">::</span><span class="kw">set_test_seed</span>(<span class="dv">42</span>)</a>
 <a class="sourceLine" id="cb15-140" data-line-number="140"><span class="co"># Testing side effects</span></a>
 <a class="sourceLine" id="cb15-141" data-line-number="141"><span class="co"># Assigning side effects</span></a>
@@ -922,7 +1038,7 @@ Contact author at <a href="mailto:r-pkgs@ludvigolsen.dk" class="email">r-pkgs@lu
 <a class="sourceLine" id="cb15-179" data-line-number="179">  1L)</a>
 <a class="sourceLine" id="cb15-180" data-line-number="180"></a>
 <a class="sourceLine" id="cb15-181" data-line-number="181"><span class="co"># Testing fn(x = 2, y = 0, z = NULL)</span></a>
-<a class="sourceLine" id="cb15-182" data-line-number="182"><span class="co"># Changed from baseline: z</span></a>
+<a class="sourceLine" id="cb15-182" data-line-number="182"><span class="co"># Changed from baseline: z = NULL</span></a>
 <a class="sourceLine" id="cb15-183" data-line-number="183">xpectr<span class="op">::</span><span class="kw">set_test_seed</span>(<span class="dv">42</span>)</a>
 <a class="sourceLine" id="cb15-184" data-line-number="184"><span class="co"># Testing side effects</span></a>
 <a class="sourceLine" id="cb15-185" data-line-number="185"><span class="kw">expect_error</span>(</a>
@@ -932,15 +1048,93 @@ Contact author at <a href="mailto:r-pkgs@ludvigolsen.dk" class="email">r-pkgs@lu
 <a class="sourceLine" id="cb15-189" data-line-number="189"></a>
 <a class="sourceLine" id="cb15-190" data-line-number="190"><span class="co">## Finished testing 'fn'                                                    ####</span></a></code></pre></div>
 </div>
-<div id="wrapstringaddin" class="section level3">
-<h3>wrapStringAddin</h3>
-<p>The <code>wrapStringAddin</code> splits long strings and wraps them with <code>paste0()</code>.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">wrapStringAddin</span>(<span class="st">&quot;This is a fairly long sentence that we would very very much like to make shorter in our test file!&quot;</span>)</a>
+<div id="rstudio-addins" class="section level3">
+<h3>RStudio Addins</h3>
+<p>Below, we present the set of <code>RStudio</code> addins. The intention is for you to set up key commands for the ones you’d like access to. Once you get used to using them, they will speed up your testing process.</p>
+<div id="how-to-set-up-a-key-command-in-rstudio" class="section level4">
+<h4>How to set up a key command in RStudio</h4>
+<p>Here’s a small guide for setting up key comands in <code>RStudio</code>. We use the <code>Insert Expectations</code> addin as an example:</p>
+<p>After installing the package, go to:</p>
+<p><code>Tools &gt;&gt; Addins &gt;&gt; Browse Addins &gt;&gt; Keyboard Shortcuts</code>.</p>
+<p>Find <code>&quot;Insert Expectations&quot;</code> and press its field under <code>Shortcut</code>.</p>
+<p>Press desired key command, e.g. <code>Alt+E</code>.</p>
+<p>Press <code>Apply</code>.</p>
+<p>Press <code>Execute</code>.</p>
+</div>
+<div id="initializegxsfunctionaddin" class="section level4">
+<h4>initializeGXSFunctionAddin</h4>
+<p>The <code>initializeGXSFunctionAddin</code> initializes the <code>gxs_function()</code> call with the argument names and default values of a selected function. We can then add the argument values and additional combinations we wish to test. Note, that we don’t need to use the default values as our baseline values.</p>
+<p>The <code>Tip</code> comment tells us to comment out the <code>gxs_function()</code> call after running it, instead of removing it. When you change your code, it’s often much quicker to regenerate the tests than to update them manually. You can then use a diff tool to check that only the intended changes were made.</p>
+<p>The <code>#</code> in the end helps the code be inserted right after the call to <code>gxs_function()</code>.</p>
+<p>Suggested keycommand: <code>Alt+F</code></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">initializeGXSFunctionAddin</span>(<span class="st">&quot;fn&quot;</span>)</a>
 <a class="sourceLine" id="cb16-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb16-3" data-line-number="3"><span class="co"># Inserts the following:</span></a>
 <a class="sourceLine" id="cb16-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="kw">paste0</span>(<span class="st">&quot;This is a fairly long sentence that we would very very much &quot;</span>,</a>
-<a class="sourceLine" id="cb16-6" data-line-number="6">       <span class="st">&quot;like to make shorter in our test file!&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="co"># Generate expectations for 'fn'</span></a>
+<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="co"># Tip: comment out the gxs_function() call</span></a>
+<a class="sourceLine" id="cb16-7" data-line-number="7"><span class="co"># so it is easy to regenerate the tests</span></a>
+<a class="sourceLine" id="cb16-8" data-line-number="8">xpectr<span class="op">::</span><span class="kw">set_test_seed</span>(<span class="dv">42</span>)</a>
+<a class="sourceLine" id="cb16-9" data-line-number="9">xpectr<span class="op">::</span><span class="kw">gxs_function</span>(</a>
+<a class="sourceLine" id="cb16-10" data-line-number="10">  <span class="dt">fn =</span> fn,</a>
+<a class="sourceLine" id="cb16-11" data-line-number="11">  <span class="dt">args_values =</span> <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb16-12" data-line-number="12">    <span class="st">&quot;x&quot;</span> =<span class="st"> </span><span class="kw">list</span>(),</a>
+<a class="sourceLine" id="cb16-13" data-line-number="13">    <span class="st">&quot;y&quot;</span> =<span class="st"> </span><span class="kw">list</span>(),</a>
+<a class="sourceLine" id="cb16-14" data-line-number="14">    <span class="st">&quot;z&quot;</span> =<span class="st"> </span><span class="kw">list</span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb16-15" data-line-number="15">  )</a>
+<a class="sourceLine" id="cb16-16" data-line-number="16">)</a>
+<a class="sourceLine" id="cb16-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb16-18" data-line-number="18"><span class="co">#</span></a></code></pre></div>
+</div>
+<div id="wrapstringaddin" class="section level4">
+<h4>wrapStringAddin</h4>
+<p>The <code>wrapStringAddin</code> splits long strings and wraps them with <code>paste0()</code>.</p>
+<p>Suggested keycommand: <code>Alt+P</code></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">wrapStringAddin</span>(<span class="st">&quot;This is a fairly long sentence that we would very very much like to make shorter in our test file!&quot;</span>)</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="co"># Inserts the following:</span></a>
+<a class="sourceLine" id="cb17-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb17-5" data-line-number="5"><span class="kw">paste0</span>(<span class="st">&quot;This is a fairly long sentence that we would very very much &quot;</span>,</a>
+<a class="sourceLine" id="cb17-6" data-line-number="6">       <span class="st">&quot;like to make shorter in our test file!&quot;</span>)</a></code></pre></div>
+</div>
+<div id="initializetestthataddin" class="section level4">
+<h4>initializeTestthatAddin</h4>
+<p>Suggested keycommand: <code>Alt+T</code></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">initializeTestthatAddin</span>()</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="co"># Inserts the following:</span></a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="kw">test_that</span>(<span class="st">&quot;testing ...()&quot;</span>, {</a>
+<a class="sourceLine" id="cb18-6" data-line-number="6">  xpectr<span class="op">::</span><span class="kw">set_test_seed</span>(<span class="dv">42</span>)</a>
+<a class="sourceLine" id="cb18-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb18-8" data-line-number="8">  <span class="co"># ...</span></a>
+<a class="sourceLine" id="cb18-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb18-10" data-line-number="10">})</a></code></pre></div>
+</div>
+<div id="assertcollectionaddin" class="section level4">
+<h4>assertCollectionAddin</h4>
+<p>Suggested keycommand: <code>Alt+C</code></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">assertCollectionAddin</span>()</a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb19-3" data-line-number="3"><span class="co"># Inserts the following:</span></a>
+<a class="sourceLine" id="cb19-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="co"># Check arguments ####</span></a>
+<a class="sourceLine" id="cb19-6" data-line-number="6">assert_collection &lt;-<span class="st"> </span>checkmate<span class="op">::</span><span class="kw">makeAssertCollection</span>()</a>
+<a class="sourceLine" id="cb19-7" data-line-number="7"><span class="co"># checkmate::assert_ , add = assert_collection)</span></a>
+<a class="sourceLine" id="cb19-8" data-line-number="8">checkmate<span class="op">::</span><span class="kw">reportAssertions</span>(assert_collection)</a>
+<a class="sourceLine" id="cb19-9" data-line-number="9"><span class="co"># End of argument checks ####</span></a></code></pre></div>
+</div>
+<div id="dputselectedaddin" class="section level4">
+<h4>dputSelectedAddin</h4>
+<p>Suggested keycommand: <code>Alt+D</code></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="kw">dputSelectedAddin</span>(<span class="st">&quot;v&quot;</span>)  <span class="co"># &quot;v&quot; is the selected code</span></a>
+<a class="sourceLine" id="cb20-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="co"># Inserts the following:</span></a>
+<a class="sourceLine" id="cb20-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb20-7" data-line-number="7"><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</a></code></pre></div>
+</div>
 </div>
 </div>
 

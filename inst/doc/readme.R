@@ -8,11 +8,11 @@ knitr::opts_chunk$set(
 )
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  # install.packages("devtools")
-#  devtools::install_github("ludvigolsen/xpectr")
+#  install.packages("xpectr")
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  install.packages("xpectr")
+#  # install.packages("devtools")
+#  devtools::install_github("ludvigolsen/xpectr")
 
 ## ----warning=FALSE, message=FALSE---------------------------------------------
 library(xpectr)
@@ -255,13 +255,11 @@ fn
 #  side_effects_19148 <- xpectr::capture_side_effects(fn(), reset_seed = TRUE)
 #  expect_equal(
 #    xpectr::strip(side_effects_19148[['warnings']]),
-#    xpectr::strip(c("G'Day Mam! I'm a warning to the world!",
-#                    "Hopefully the whole world will see me :o")),
+#    xpectr::strip(c("G'Day Mam! I'm a warning to the world!", "Hopefully the whole world will see me :o")),
 #    fixed = TRUE)
 #  expect_equal(
 #    xpectr::strip(side_effects_19148[['messages']]),
-#    xpectr::strip(c("Hi! I'm Kevin, your favorite message!\n",
-#                    "Kevin is ma name! Yesss!\n")),
+#    xpectr::strip(c("Hi! I'm Kevin, your favorite message!\n", "Kevin is ma name! Yesss!\n")),
 #    fixed = TRUE)
 #  # Assigning output
 #  output_19148 <- xpectr::suppress_mw(fn())
@@ -313,7 +311,7 @@ fn
 
 ## ----eval=FALSE---------------------------------------------------------------
 #  # Define a function with arguments
-#  fn <- function(x, y, z) {
+#  fn <- function(x, y, z = 10) {
 #    if (x > 3) stop("'x' > 3")
 #    if (y < 0) warning("'y'<0")
 #    if (z == 10) message("'z' was 10!")
@@ -369,7 +367,7 @@ fn
 #    1L)
 #  
 #  # Testing fn(x = 4, y = 0, z = 5)
-#  # Changed from baseline: x
+#  # Changed from baseline: x = 4
 #  xpectr::set_test_seed(42)
 #  # Testing side effects
 #  expect_error(
@@ -378,7 +376,7 @@ fn
 #    fixed = TRUE)
 #  
 #  # Testing fn(x = NA, y = 0, z = 5)
-#  # Changed from baseline: x
+#  # Changed from baseline: x = NA
 #  xpectr::set_test_seed(42)
 #  # Testing side effects
 #  expect_error(
@@ -387,7 +385,7 @@ fn
 #    fixed = TRUE)
 #  
 #  # Testing fn(x = NULL, y = 0, z = 5)
-#  # Changed from baseline: x
+#  # Changed from baseline: x = NULL
 #  xpectr::set_test_seed(42)
 #  # Testing side effects
 #  expect_error(
@@ -396,7 +394,7 @@ fn
 #    fixed = TRUE)
 #  
 #  # Testing fn(x = 2, y = -1, z = 5)
-#  # Changed from baseline: y
+#  # Changed from baseline: y = -1
 #  xpectr::set_test_seed(42)
 #  # Testing side effects
 #  # Assigning side effects
@@ -440,7 +438,7 @@ fn
 #    1L)
 #  
 #  # Testing fn(x = 2, y = NULL, z = 5)
-#  # Changed from baseline: y
+#  # Changed from baseline: y = NULL
 #  xpectr::set_test_seed(42)
 #  # Testing side effects
 #  expect_error(
@@ -449,7 +447,7 @@ fn
 #    fixed = TRUE)
 #  
 #  # Testing fn(x = 2, y = 0, z = 10)
-#  # Changed from baseline: z
+#  # Changed from baseline: z = 10
 #  xpectr::set_test_seed(42)
 #  # Testing side effects
 #  # Assigning side effects
@@ -493,7 +491,7 @@ fn
 #    1L)
 #  
 #  # Testing fn(x = 2, y = 0, z = NULL)
-#  # Changed from baseline: z
+#  # Changed from baseline: z = NULL
 #  xpectr::set_test_seed(42)
 #  # Testing side effects
 #  expect_error(
@@ -505,11 +503,67 @@ fn
 #  
 
 ## ----eval=FALSE---------------------------------------------------------------
+#  initializeGXSFunctionAddin("fn")
+#  
+#  # Inserts the following:
+#  
+#  # Generate expectations for 'fn'
+#  # Tip: comment out the gxs_function() call
+#  # so it is easy to regenerate the tests
+#  xpectr::set_test_seed(42)
+#  xpectr::gxs_function(
+#    fn = fn,
+#    args_values = list(
+#      "x" = list(),
+#      "y" = list(),
+#      "z" = list(10)
+#    )
+#  )
+#  
+#  #
+#  
+
+## ----eval=FALSE---------------------------------------------------------------
 #  wrapStringAddin("This is a fairly long sentence that we would very very much like to make shorter in our test file!")
 #  
 #  # Inserts the following:
 #  
 #  paste0("This is a fairly long sentence that we would very very much ",
 #         "like to make shorter in our test file!")
+#  
+
+## ----eval=FALSE---------------------------------------------------------------
+#  initializeTestthatAddin()
+#  
+#  # Inserts the following:
+#  
+#  test_that("testing ...()", {
+#    xpectr::set_test_seed(42)
+#  
+#    # ...
+#  
+#  })
+#  
+
+## ----eval=FALSE---------------------------------------------------------------
+#  assertCollectionAddin()
+#  
+#  # Inserts the following:
+#  
+#  # Check arguments ####
+#  assert_collection <- checkmate::makeAssertCollection()
+#  # checkmate::assert_ , add = assert_collection)
+#  checkmate::reportAssertions(assert_collection)
+#  # End of argument checks ####
+#  
+
+## ----eval=FALSE---------------------------------------------------------------
+#  v <- c(1, 2, 3)
+#  
+#  dputSelectedAddin("v")  # "v" is the selected code
+#  
+#  # Inserts the following:
+#  
+#  c(1, 2, 3)
 #  
 
