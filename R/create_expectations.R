@@ -340,8 +340,11 @@ create_expectations_matrix <- function(data, name = NULL, indentation = 0,
                                                       indentation = indentation)
   dim_expectation <- create_dim_expectation(data = data, name = name,
                                             indentation = indentation)
-  symmetry_expectation <- create_is_symmetric_expectation(data = data, name = name,
-                                                          indentation = indentation)
+  symmetry_expectation <- tryCatch(
+    # Doesn't work for table objects
+    create_is_symmetric_expectation(data = data, name = name,
+                                    indentation = indentation),
+    error = function(e){return(NULL)})
 
   # Find digits for rounding
   if (isTRUE(round_to_tolerance) && is.numeric(data)){
@@ -440,7 +443,7 @@ create_expectations_matrix <- function(data, name = NULL, indentation = 0,
                           create_comment = add_comments),
       dim_expectation,
       create_test_comment("symmetry", indentation = indentation,
-                          create_comment = add_comments),
+                          create_comment = add_comments && !is.null(symmetry_expectation)),
       symmetry_expectation
     )
 
@@ -712,12 +715,12 @@ create_expectations_side_effect <- function(side_effects, name = NULL,
   assert_collection <- checkmate::makeAssertCollection()
   checkmate::assert_list(
     x = side_effects, all.missing = FALSE,
-    len = 4, add = assert_collection
+    len = 5, add = assert_collection
   )
   checkmate::assert_names(
     x = names(side_effects),
     identical.to = c(
-      "error", "warnings",
+      "error", "error_class", "warnings",
       "messages", "has_side_effects"
     ),
     type = "named"
@@ -738,28 +741,45 @@ create_expectations_side_effect <- function(side_effects, name = NULL,
     name <- deparse(substitute(side_effects))
   }
 
-  expectations <- list()
+  call_name <- name
+  name <- create_output_var_name("side_effects_", test_id)
+
+  # Create assignment string
+  assign_string <- create_assignment_strings(
+    call_name = paste0("xpectr::capture_side_effects(", call_name, ", reset_seed = TRUE)"),
+    new_name = name,
+    evaluate_once = TRUE,
+    comment = "# Assigning side effects")
+
+  expectations <- list(assign_string)
 
   if (!is.null(side_effects$error)) {
-    expectations <- c(expectations, list(
-      create_expect_side_effect(
-        name, side_effects$error,
-        side_effect_type = "error",
-        spaces = 2,
-        strip = strip
-      )
-    ))
+
+    err_expectation <- create_equality_expectation(
+      data = side_effects, name = name,
+      prefix = "",
+      suffix = "[['error']]",
+      add_strip = strip,
+      add_fixed = TRUE,
+      indentation = indentation
+    )
+
+    err_class_expectation <- create_equality_expectation(
+      data = side_effects, name = name,
+      prefix = "",
+      suffix = "[['error_class']]",
+      add_strip = strip,
+      add_fixed = TRUE,
+      indentation = indentation
+    )
+
+    expectations <- c(
+      expectations,
+      err_expectation,
+      err_class_expectation
+    )
+
   } else {
-
-    call_name <- name
-    name <- create_output_var_name("side_effects_", test_id)
-
-    # Create assignment string
-    assign_string <- create_assignment_strings(
-      call_name = paste0("xpectr::capture_side_effects(", call_name, ", reset_seed = TRUE)"),
-      new_name = name,
-      evaluate_once = TRUE,
-      comment = "# Assigning side effects")
 
     msg_expectation <- create_equality_expectation(
       data = side_effects, name = name,
@@ -779,7 +799,6 @@ create_expectations_side_effect <- function(side_effects, name = NULL,
 
     expectations <- c(
       expectations,
-      assign_string,
       warns_expectation,
       msg_expectation)
   }
@@ -789,7 +808,8 @@ create_expectations_side_effect <- function(side_effects, name = NULL,
     create_test_comment("side effects", indentation = indentation,
                         create_comment = add_comments),
     expectations
-  )
+  ) %>% unlist() %>%
+    as.list()
 }
 
 

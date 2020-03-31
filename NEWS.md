@@ -1,3 +1,17 @@
+# xpectr 0.3.0
+
+* Breaking: `element_classes()` only returns the first class string per element.
+
+* Adds `navigateTestFileAddin()` addin for opening test file from string name. E.g. when running `testthat` in the build window, copy the filename and line number of the failed test, e.g. `test_x.R:5:`, and run the addin. It will then open `/tests/testthat/test_x.R` at line `5`.
+
+* Adds test of `class` attribute for errors. 
+
+* Extracts error message with `conditionMessage()` instead of `$message`.
+
+* Adds `indentation = 2` to generated code from `initializeGXSFunctionAddin()`.
+
+* Bug fix: Does not check symmetry for `table` objects.
+
 # xpectr 0.2.0
 
 * Adds `initializeGXSFunctionAddin()` addin for initializing a `gxs_function()` call for a selected function.

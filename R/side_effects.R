@@ -70,6 +70,7 @@ capture_side_effects <- function(expr, envir = NULL, reset_seed = FALSE) {
   # Capture error
   error <- testthat::capture_error(suppress_mw(
     eval(sexpr, envir = envir)))
+  error_class = class(error)
 
   # If no error, capture messages and warnings
   if (is.null(error)) {
@@ -84,7 +85,7 @@ capture_side_effects <- function(expr, envir = NULL, reset_seed = FALSE) {
     warnings <- testthat::capture_warnings(suppressMessages(
       eval(sexpr, envir = envir)))
   } else {
-    error <- error$message
+    error <- cnd_message(error)
     messages <- NULL
     warnings <- NULL
   }
@@ -98,6 +99,7 @@ capture_side_effects <- function(expr, envir = NULL, reset_seed = FALSE) {
 
   list(
     "error" = error,
+    "error_class" = error_class,
     "warnings" = warnings,
     "messages" = messages,
     "has_side_effects" = any_side_effects(error, warnings, messages)
