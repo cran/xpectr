@@ -518,7 +518,8 @@ fn
 #      "y" = list(),
 #      "z" = list(10)
 #    ),
-#    identation = 2
+#    identation = 2,
+#    copy_env = FALSE
 #  )
 #  
 #  #

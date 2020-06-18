@@ -1,6 +1,6 @@
 Package: xpectr
 Title: Generates Expectations for 'testthat' Unit Testing
-Version: 0.3.0
+Version: 0.4.0
 Authors@R: 
     c(person(given = "Ludvig Renbo",
              family = "Olsen",
@@ -16,19 +16,19 @@ License: MIT + file LICENSE
 URL: https://github.com/ludvigolsen/xpectr
 BugReports: https://github.com/ludvigolsen/xpectr/issues
 Depends: R (>= 3.5.0)
-Imports: clipr (>= 0.7.0), rstudioapi (>= 0.10), testthat (>= 2.3.1),
-        plyr, dplyr, tibble, rlang, utils, withr (>= 2.0.0), stats,
-        checkmate (>= 2.0.0), lifecycle
-Suggests: knitr, rmarkdown, data.table
+Imports: clipr (>= 0.7.0), checkmate (>= 2.0.0), dplyr, fansi (>=
+        0.4.1), lifecycle, plyr, rlang, rstudioapi (>= 0.10), stats,
+        testthat (>= 2.3.1), tibble, utils, withr (>= 2.0.0)
+Suggests: data.table, knitr, rmarkdown
 RdMacros: lifecycle
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2020-03-31 19:13:56 UTC; ludvigolsen
+Packaged: 2020-06-18 20:57:09 UTC; ludvigolsen
 Author: Ludvig Renbo Olsen [aut, cre],
   R. Mark Sharp [ctb]
 Maintainer: Ludvig Renbo Olsen <r-pkgs@ludvigolsen.dk>
 Repository: CRAN
-Date/Publication: 2020-03-31 20:20:03 UTC
+Date/Publication: 2020-06-18 21:20:03 UTC
