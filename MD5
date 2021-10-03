@@ -1,7 +1,7 @@
-e09f75109e62e272b7958c9bd4d4eb8c *DESCRIPTION
+5f18b6908b036f23e858cf742b522a14 *DESCRIPTION
 6b81d6370ebb56616e649ffd17fa8d65 *LICENSE
 f074255bc65d6df7a2f8a367ade6f7f6 *NAMESPACE
-b7bfb47680a0542ac352940134ffa585 *NEWS.md
+fe8540b5f88d286fa596185d0d90c994 *NEWS.md
 6370fa31409638626cbe75832af2a936 *R/addin_utils.R
 78ba6b123b4b07151832e34d2755c5e6 *R/assert_collection_addin.R
 f0586a718db5c601c8efdd70d53bf165 *R/create_expectations.R
@@ -11,7 +11,7 @@ f0586a718db5c601c8efdd70d53bf165 *R/create_expectations.R
 491ee33fa8827f70c49913e01b3384ca *R/expectation_creators.R
 7f7e336da522a2b81aad1b431644e019 *R/gxs_function.R
 e0c21038b4b327d90f5de02791734c5b *R/gxs_selection.R
-76f17cf8e6c1daca10911df5a6612d4d *R/helpers.R
+afb65c8ed4350df0e70d13d015735c40 *R/helpers.R
 29b1b8c09eda18762ab0d81d93c8c71c *R/initialize_gxs_function_addin.R
 e3c3e80578099ca7dd2bae6be391b800 *R/initialize_test_that_addin.R
 73d2aad9e1d33362806cb9d19208ec77 *R/navigateTestFileAddin.R
@@ -25,15 +25,15 @@ a6b4d3c565afa940b4cdfcdb6b2505a1 *R/string_utils.R
 8758ae41d84b2fad22a1da29a648077d *R/strip.R
 c4793acbd5688ec2cb79f39fd15e3ffe *R/strip_side_effect_messages.R
 809cb2b75f1ad9c125537cdfeb6d17f4 *R/suppress_mw.R
-acc67904155c28dba23465272789f95f *R/table_of_content_markdown.R
+15c062703b41cf7ce200a4c4561825cb *R/table_of_content_markdown.R
 88ae0956a2933c0fa63f0c2b2810a5cb *R/testthat_addins.R
 a414601587b677dd8d5ebbe596e1e39a *R/wrap_string_addin.R
-399d4397892981463d1c8ccb1f1f0fe3 *README.md
+631623ecd8c3633166687fd7d5e39f2e *README.md
 678a9b4393a923b31f0c05f31836966f *build/vignette.rds
-9a8aae7e0179962dad285e802ae1b2f3 *build/xpectr.pdf
+47190e4d65f0cb303ba38094f5e7d273 *build/xpectr.pdf
 5cee730a2f340605d4b89506b8827cc6 *inst/doc/readme.R
-a6684e4542fa0419c1f2da76a8e8402d *inst/doc/readme.Rmd
-f80ef249c2f70aff72f6d6f7dae1b563 *inst/doc/readme.html
+7035886731fa9de9ecd4e09a9410d292 *inst/doc/readme.Rmd
+07dac93fcb725cf0e39f3a9d1962aa00 *inst/doc/readme.html
 eca8ecbb8d4870f6f79b92a5e112a1c5 *inst/rstudio/addins.dcf
 d25348ca516ca80919ec493c12086365 *man/assertCollectionAddin.Rd
 45e44f31782b3a008ab664e6d439ffa1 *man/capture_parse_eval_side_effects.Rd
@@ -59,7 +59,7 @@ c19d9d95eeda46af82b6a4806780cbe7 *man/insertExpectationsAddin.Rd
 62d281f79a6cc788f7094325f5e71324 *man/navigateTestFileAddin.Rd
 c4e3bffec2bda3de13d7a015e922092e *man/num_total_elements.Rd
 eb272407140b62dd5aeec8dcefa14273 *man/prepare_insertion.Rd
-33507e5febcc20e8c60fcbba0f2dd8f8 *man/render_toc.Rd
+f1126e940f293242e85d1f9e9478afcb *man/render_toc.Rd
 48e398acb656f39e2324b6133aca7999 *man/set_test_seed.Rd
 f2beebd8af9a418e034587b77fdfaebe *man/simplified_formals.Rd
 4b88feac4f43654208cb024772d02519 *man/smpl.Rd
@@ -77,7 +77,7 @@ e4f143b4826e0314277b0ee0164f0db5 *man/suppress_mw.Rd
 d3d7ef660bc739aec5fc667a2c7b080e *tests/testthat/test_do_if_family.R
 1367503932b3bb206b447562cd204397 *tests/testthat/test_dput_selected_addin.R
 b68c4a67956ff7c6620aa7fdfc9cf706 *tests/testthat/test_element_descriptors.R
-04ae9a308ab67a708cc515908856b74a *tests/testthat/test_gxs_function.R
+c3e9e1e7211defed422aa4cae11a94eb *tests/testthat/test_gxs_function.R
 ea648bc42100a568507fcc5692f4de12 *tests/testthat/test_gxs_selection.R
 fb512733bbf318ecea2f4491fc88e373 *tests/testthat/test_helpers.R
 e6d6a5730d39bc881d8744c396c83516 *tests/testthat/test_initialize_gxs_function_addin.R
@@ -89,5 +89,5 @@ e6d6a5730d39bc881d8744c396c83516 *tests/testthat/test_initialize_gxs_function_ad
 801e5a18294e5e0e546ece843fd3a3e8 *tests/testthat/test_strip.R
 897f7c3c6c28e38b7bff819de580e734 *tests/testthat/test_suppress_mw.R
 655ff3b664ca4d20fbfdc3cd9ea1915b *tests/testthat/test_wrap_string_addin.R
-a6684e4542fa0419c1f2da76a8e8402d *vignettes/readme.Rmd
+7035886731fa9de9ecd4e09a9410d292 *vignettes/readme.Rmd
 f7c6652467723f53d0228fc58a016129 *vignettes/styles.css

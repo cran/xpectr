@@ -1,3 +1,8 @@
+
+# xpectr 0.4.1
+
+* Prepares package for `checkmate 2.1.0`.
+
 # xpectr 0.4.0
 
 * `wrapStringAddin()` now wraps short strings in `paste0()` as well. Previously, strings that were too short to be split were not wrapped.
