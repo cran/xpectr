@@ -1,4 +1,8 @@
 
+# xpectr 0.4.2
+
+Patch for CRAN compatibility with upcoming R changes.
+
 # xpectr 0.4.1
 
 * Prepares package for `checkmate 2.1.0`.

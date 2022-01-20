@@ -209,7 +209,7 @@ df
 #    fixed = TRUE)
 #  expect_equal(
 #    df[["c"]],
-#    structure(1:3, .Label = c("a", "b", "c"), class = "factor"))
+#    structure(1:3, levels = c("a", "b", "c"), class = "factor"))
 #  # Testing column names
 #  expect_equal(
 #    names(df),
