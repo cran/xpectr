@@ -1,7 +1,11 @@
 
-# xpectr 0.4.2
+# xpectr 0.4.3
 
-Patch for CRAN compatibility with upcoming R changes.
+Due to not fixing some non-critical errors before the given deadline, `xpectr` was shortly removed from `CRAN`. This release brings it back online :-)
+
+* Fixes `tidyselect`-related warnings.
+
+* Fixes a few tests due to changes in error messages in the tested functions.
 
 # xpectr 0.4.1
 

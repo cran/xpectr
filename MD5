@@ -1,7 +1,7 @@
-206c57d947459ab18a2d988cec3e39ff *DESCRIPTION
+a411b01dcf4531dae1de9374cc6068f9 *DESCRIPTION
 6b81d6370ebb56616e649ffd17fa8d65 *LICENSE
 f074255bc65d6df7a2f8a367ade6f7f6 *NAMESPACE
-b8eb96447e8b07cec5d40f7a3947dd7a *NEWS.md
+f4082a6cdd5a93bf532233891ecd5f49 *NEWS.md
 6370fa31409638626cbe75832af2a936 *R/addin_utils.R
 78ba6b123b4b07151832e34d2755c5e6 *R/assert_collection_addin.R
 f0586a718db5c601c8efdd70d53bf165 *R/create_expectations.R
@@ -9,7 +9,7 @@ f0586a718db5c601c8efdd70d53bf165 *R/create_expectations.R
 200c9ae9814b809fb57ab88ed5bf3700 *R/dput_addins.R
 1d531aea23d8f49a6178a35e2da40f79 *R/element_descriptors.R
 491ee33fa8827f70c49913e01b3384ca *R/expectation_creators.R
-7f7e336da522a2b81aad1b431644e019 *R/gxs_function.R
+b0fecc68e51b9b07879116425f0d22d2 *R/gxs_function.R
 e0c21038b4b327d90f5de02791734c5b *R/gxs_selection.R
 afb65c8ed4350df0e70d13d015735c40 *R/helpers.R
 29b1b8c09eda18762ab0d81d93c8c71c *R/initialize_gxs_function_addin.R
@@ -29,11 +29,11 @@ c4793acbd5688ec2cb79f39fd15e3ffe *R/strip_side_effect_messages.R
 88ae0956a2933c0fa63f0c2b2810a5cb *R/testthat_addins.R
 a414601587b677dd8d5ebbe596e1e39a *R/wrap_string_addin.R
 1c69eda7d9a38411570c13d1a47700e3 *README.md
-678a9b4393a923b31f0c05f31836966f *build/vignette.rds
-57ded4049a578283c2091b406880ed33 *build/xpectr.pdf
+56451b87d46c6888eabfa14001519e3f *build/vignette.rds
+396cc08158c0ab97b5481cf84e6fcda0 *build/xpectr.pdf
 f38dd7f83458a28cc754fc0346eacd9f *inst/doc/readme.R
 f630f37ab325dacaf62310ae108a0f14 *inst/doc/readme.Rmd
-2a3c12a8906b518f62b802470f0a739e *inst/doc/readme.html
+8727b4f291d4a6d8e85f75df92035f45 *inst/doc/readme.html
 eca8ecbb8d4870f6f79b92a5e112a1c5 *inst/rstudio/addins.dcf
 d25348ca516ca80919ec493c12086365 *man/assertCollectionAddin.Rd
 45e44f31782b3a008ab664e6d439ffa1 *man/capture_parse_eval_side_effects.Rd
@@ -51,7 +51,7 @@ c3978703d8f40f2679795335715e98f4 *man/figures/lifecycle-experimental.svg
 46de21252239c5a23d400eae83ec6b2d *man/figures/lifecycle-retired.svg
 6902bbfaf963fbc4ed98b86bda80caa2 *man/figures/lifecycle-soft-deprecated.svg
 53b3f893324260b737b3c46ed2a0e643 *man/figures/lifecycle-stable.svg
-508999e15e50c256a031b3f7b25aa5b6 *man/gxs_function.Rd
+4eeb8a6b221334b8802a1d5509d4f51e *man/gxs_function.Rd
 f963179186b552f0d825ce3e59172f95 *man/gxs_selection.Rd
 92e4965ebf736b1b2e1d84a7795d2f1c *man/initializeGXSFunctionAddin.Rd
 7106627cc95c165983f7f110ea29ef5b *man/initializeTestthatAddin.Rd
@@ -59,7 +59,7 @@ c19d9d95eeda46af82b6a4806780cbe7 *man/insertExpectationsAddin.Rd
 62d281f79a6cc788f7094325f5e71324 *man/navigateTestFileAddin.Rd
 c4e3bffec2bda3de13d7a015e922092e *man/num_total_elements.Rd
 eb272407140b62dd5aeec8dcefa14273 *man/prepare_insertion.Rd
-f1126e940f293242e85d1f9e9478afcb *man/render_toc.Rd
+083439d3fe4f7848e4c6162328a82eaf *man/render_toc.Rd
 48e398acb656f39e2324b6133aca7999 *man/set_test_seed.Rd
 f2beebd8af9a418e034587b77fdfaebe *man/simplified_formals.Rd
 4b88feac4f43654208cb024772d02519 *man/smpl.Rd
@@ -72,12 +72,12 @@ e4f143b4826e0314277b0ee0164f0db5 *man/suppress_mw.Rd
 54bf6b0d16434fe19fb47909b1c0ba21 *tests/testthat.R
 6312d05b2e31513716bd46997fcff8ee *tests/testthat/test_addin_utils.R
 47d257d5488249d5a08c34afece4a9c5 *tests/testthat/test_assert_collection_addin.R
-2725b3d8feceb8c2b1cf3e4ff64d09ab *tests/testthat/test_capture_side_effects.R
+3f8dbed35badcbfdd97e750bb713d05a *tests/testthat/test_capture_side_effects.R
 d0759403f3a03d6b1536e2dace168ad7 *tests/testthat/test_create_expectations.R
 d3d7ef660bc739aec5fc667a2c7b080e *tests/testthat/test_do_if_family.R
 1367503932b3bb206b447562cd204397 *tests/testthat/test_dput_selected_addin.R
 b68c4a67956ff7c6620aa7fdfc9cf706 *tests/testthat/test_element_descriptors.R
-c3e9e1e7211defed422aa4cae11a94eb *tests/testthat/test_gxs_function.R
+eb6fba9eba7d4d1daeab7d0f7c537829 *tests/testthat/test_gxs_function.R
 ea648bc42100a568507fcc5692f4de12 *tests/testthat/test_gxs_selection.R
 fb512733bbf318ecea2f4491fc88e373 *tests/testthat/test_helpers.R
 e6d6a5730d39bc881d8744c396c83516 *tests/testthat/test_initialize_gxs_function_addin.R
