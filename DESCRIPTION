@@ -1,11 +1,12 @@
 Package: xpectr
 Title: Generates Expectations for 'testthat' Unit Testing
-Version: 0.4.3
+Version: 0.4.4
 Authors@R: 
     c(person(given = "Ludvig Renbo",
              family = "Olsen",
              role = c("aut", "cre"),
-             email = "r-pkgs@ludvigolsen.dk"),
+             email = "r-pkgs@ludvigolsen.dk",
+             comment = c(ORCID = "0009-0006-6798-7454")),
       person(given = "R. Mark",
              family = "Sharp",
              role = c("ctb")))
@@ -22,12 +23,12 @@ Imports: clipr (>= 0.7.0), checkmate (>= 2.0.0), dplyr, fansi (>=
 Suggests: data.table, knitr, rmarkdown
 RdMacros: lifecycle
 Encoding: UTF-8
-RoxygenNote: 7.2.1
+RoxygenNote: 7.3.2
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2022-11-17 15:43:45 UTC; au547627
-Author: Ludvig Renbo Olsen [aut, cre],
+Packaged: 2025-03-03 17:13:05 UTC; au547627
+Author: Ludvig Renbo Olsen [aut, cre] (<https://orcid.org/0009-0006-6798-7454>),
   R. Mark Sharp [ctb]
 Maintainer: Ludvig Renbo Olsen <r-pkgs@ludvigolsen.dk>
 Repository: CRAN
-Date/Publication: 2022-11-18 09:50:02 UTC
+Date/Publication: 2025-03-03 17:30:02 UTC
